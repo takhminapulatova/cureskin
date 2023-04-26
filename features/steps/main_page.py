@@ -1,4 +1,4 @@
-from behave import given, when
+from behave import given, when, then
 
 
 @given('Open main page')
@@ -14,3 +14,8 @@ def click_on_search_icon(context):
 @when('Search for the {product}')
 def search_for_product(context, product):
     context.app.main_page.search_for_product(product)
+
+
+@then('Verify each footer policy link opens correct page')
+def verify_policy_links(context):
+    context.app.main_page.verify_policy_links()
