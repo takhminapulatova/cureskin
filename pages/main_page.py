@@ -16,13 +16,14 @@ class MainPage(Page):
         self.open_url('https://shop.cureskin.com/')
 
     def click_on_search_icon(self):
-        self.click(*self.SEARCH_ICON)
+        self.wait_for_element_to_click(*self.SEARCH_ICON)
 
     def search_for_product(self, text):
         self.input_text(text, *self.SEARCH_FIELD)
         self.click(*self.SEARCH_BUTTON)
 
     def enter_email(self, email):
+        self.find_element(*self.EMAIL_FIELD).clear()
         self.input_text(email, *self.EMAIL_FIELD)
         self.click(*self.SUBMIT_EMAIL)
 
