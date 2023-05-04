@@ -8,24 +8,24 @@ def browser_init(context, test_name):
     :param context: Behave context
     :param test_name: scenario.name
     """
-    options = webdriver.ChromeOptions()
-    options.add_argument('--headless')
+    # options = webdriver.ChromeOptions()
+    # options.add_argument('--headless')
     # context.driver = webdriver.Chrome(options=options)
-    # context.driver = webdriver.Chrome()
+    context.driver = webdriver.Chrome()
     # context.driver = webdriver.Firefox()
     bs_user = 'takhminapulatova_tfkbsJ'
     bs_key = 'jdGqxrsVDt5dCjyZ8VuV'
 
-    desired_cap = {
-        'browserName': 'Firefox',
-        'bstack:options': {
-            'os': 'Windows',
-            'osVersion': '10',
-            'sessionName': test_name
-        }
-    }
-    url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
-    context.driver = webdriver.Remote(url, desired_capabilities=desired_cap)
+    # desired_cap = {
+    #     'browserName': 'Firefox',
+    #     'bstack:options': {
+    #         'os': 'Windows',
+    #         'osVersion': '10',
+    #         'sessionName': test_name
+    #     }
+    # }
+    # url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
+    # context.driver = webdriver.Remote(url, desired_capabilities=desired_cap)
     context.driver.implicitly_wait(4)
     context.driver.maximize_window()
     context.app = Application(driver=context.driver)
