@@ -11,10 +11,21 @@ def browser_init(context, test_name):
     # options = webdriver.ChromeOptions()
     # options.add_argument('--headless')
     # context.driver = webdriver.Chrome(options=options)
-    context.driver = webdriver.Chrome()
+
+    # options = webdriver.FirefoxOptions()
+    # options.add_argument('--headless')
+    # context.driver = webdriver.Firefox(options=options)
+
+    # context.driver = webdriver.Chrome()
     # context.driver = webdriver.Firefox()
-    bs_user = 'takhminapulatova_tfkbsJ'
-    bs_key = 'jdGqxrsVDt5dCjyZ8VuV'
+
+    mobile_emulation = {"deviceName": "iPhone 12 Pro"}
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
+    context.driver = webdriver.Chrome(options=chrome_options)
+
+    # bs_user = 'takhminapulatova_tfkbsJ'
+    # bs_key = 'jdGqxrsVDt5dCjyZ8VuV'
 
     # desired_cap = {
     #     'browserName': 'Firefox',
@@ -26,6 +37,7 @@ def browser_init(context, test_name):
     # }
     # url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
     # context.driver = webdriver.Remote(url, desired_capabilities=desired_cap)
+
     context.driver.implicitly_wait(4)
     context.driver.maximize_window()
     context.app = Application(driver=context.driver)
